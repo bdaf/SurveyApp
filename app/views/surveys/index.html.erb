@@ -1,9 +1,19 @@
+<%= stylesheet_link_tag('list_in_surveys') %>
 <h1>Surveys</h1>
 
 <ul>
   <% @surveys.each do |survey| %>
     <li>
       <%= link_to survey.id, survey %>
+      Age: 
+      <%= survey.age %>
+      Growth: 
+      <%= survey.growth %>
+      Gender: 
+      <%= survey.gender %>
+      Favourite Color: 
+      <%= survey.fav_color %>
     </li>
+    
   <% end %>
 </ul>
