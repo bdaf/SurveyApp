@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.change-background-after-detection:hover {
+    background: blue;
+}
