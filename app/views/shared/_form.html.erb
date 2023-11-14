@@ -1,3 +1,4 @@
+<%= javascript_include_tag('random_colour.js') %>
 <%= form_with model: survey do |form| %>
   <div class ="change-background-after-detection">
     <%= form.label :age %><br>
@@ -30,8 +31,11 @@
       <div><%= message %></div>
     <% end %>
   </div>
-
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<button onclick="randomColour(['green', 'red', 'blue', 'white', 'black'])">
+  Random Colour
+</button>
