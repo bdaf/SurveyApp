@@ -13,8 +13,7 @@ class SurveysController < ApplicationController
     
     def create
         @survey = Survey.new(survey_params)
-        @survey[:gender] = @survey.gender.upcase
-        @survey[:fav_color] = @survey.fav_color.downcase
+        @survey = survey_aligning(@survey)
         if @survey.save
             flash[:notice] = "Succesfully created survey!"
             redirect_to @survey
@@ -23,9 +22,38 @@ class SurveysController < ApplicationController
             render :new, status: :unprocessable_entity
         end
     end
+
+    def edit
+        @survey = Survey.find(params[:id])
+      end
+    
+      def update
+        @survey = Survey.find(params[:id])
+        @survey = survey_aligning(@survey)
+    
+        if @survey.update(survey_params)
+            flash[:notice] = "Succesfully updated survey!"
+            redirect_to @survey
+        else
+            flash.now[:alert] = "Mistakes during typing data!"
+            render :edit, status: :unprocessable_entity
+        end
+    end
+
+    def destroy
+        @survey = Survey.find(params[:id])
+        @survey.destroy
+        
+        flash[:notice] = "Succesfully deleted survey!"
+        redirect_to surveys_path, status: :see_other
+    end
     
     private
     def survey_params
         params.require(:survey).permit(:age, :growth, :gender, :fav_color)
+    end
+
+    def survey_aligning a_survey
+        return Survey.new({age: a_survey.age, growth: a_survey.growth, gender: a_survey.gender.upcase, fav_color: a_survey.fav_color.downcase})
     end
 end

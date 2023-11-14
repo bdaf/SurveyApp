@@ -1,5 +1,5 @@
 <%= form_with model: survey do |form| %>
-  <div>
+  <div class ="change-background-after-detection">
     <%= form.label :age %><br>
     <%= form.text_field :age %>
     <% survey.errors.full_messages_for(:age).each do |message| %>
@@ -15,7 +15,7 @@
     <% end %>
   </div>
 
-  <div>
+  <div class = "change-background-after-detection">
     <%= form.label :gender %><br>
     <%= form.text_area :gender %>
     <% survey.errors.full_messages_for(:gender).each do |message| %>
