@@ -2,6 +2,11 @@ class SurveysController < ApplicationController
     def index
         @surveys = Survey.all
     end
+
+    def refresh
+        @surveys = Survey.all
+        render partial: "surveys/surveys", object: @surveys 
+    end
     
     def show
         @survey = Survey.find(params[:id])
