@@ -36,6 +36,6 @@
   </div>
 <% end %>
 
-<button onclick="randomColour(['green', 'red', 'blue', 'white', 'black'])">
+<button id="randomColourButton" onclick="randomColour(<%= Survey::VALID_COLORS %>)">
   Random Colour
 </button>
